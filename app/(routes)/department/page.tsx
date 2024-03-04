@@ -3,7 +3,13 @@ import React from "react";
 const department = () => {
   return (
     <main>
-      <h1>department</h1>
+      <section
+        className="flex min-h-screen
+            flex-1 flex-col pb-6
+            max-md:pb-14 sm:px-14"
+      >
+        <div>department</div>
+      </section>
     </main>
   );
 };

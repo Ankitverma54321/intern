@@ -41,7 +41,13 @@ const Navbar = () => {
                 className="small-medium btn-secondary min-h-[41px]
                  w-full rounded-lg px-4 py-3 shadow-none"
               >
-                <span className="primary-text-gradient max-lg:hidden">
+                <Image
+                  src={login_icon}
+                  alt="login icon"
+                  height={20}
+                  width={20}
+                />
+                <span className="primary-text-gradient max-lg:hidden pl-2">
                   Log In
                 </span>
               </Button>
