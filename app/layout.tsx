@@ -15,11 +15,11 @@ export default function RootLayout({
           <Navbar />
           <div className="flex pt-20">
             <section
-              className="flex min-h-screen
-            flex-1 flex-col pb-6 
-            max-md:pb-14 sm:px-14"
+              className="flex min-h-screen min-w-full
+            flex-1 flex-col 
+            max-md:pb-14"
             >
-              <div className="mx-auto w-full max-w-5xl">{children}</div>
+              <div className="mx-auto w-full">{children}</div>
             </section>
           </div>
           <Footer />
