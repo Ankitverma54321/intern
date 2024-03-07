@@ -3,6 +3,7 @@ const depart_img = [
     id: 1,
     departments: "Computer Science",
     image: "/assets/department_icons/cse.mp4",
+    link: "pages/computer",
   },
 
   {
