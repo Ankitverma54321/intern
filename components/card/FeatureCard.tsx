@@ -11,9 +11,9 @@ interface FeatureProps {
 }
 
 const FeatureCard = ({ id, heading, explanation }: FeatureProps) => (
-  <div className="flex flex-col mx-4">
+  <div className="flex flex-col  items-center mx-4">
     <h1 className="text-4xl">{heading}</h1>
-    <p className="font-size:10 mt-3">{explanation}</p>
+    <p className="text-xl mt-3">{explanation}</p>
     <Link href="/financials">
       <Button
         variant={"outline"}

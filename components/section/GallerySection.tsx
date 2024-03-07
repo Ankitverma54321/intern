@@ -1,54 +1,47 @@
 "use client";
 
-import * as React from "react";
+// components/GallerySection.tsx
+import React, { useState, useEffect } from "react";
 import images from "@/constants/imagesource";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 
-// const images = [
-//   "https://source.unsplash.com/1600x900/?nature,water",
+const GallerySection: React.FC = () => {
+  const [position, setPosition] = useState(0);
+  const speed = 2; // Adjust the speed as needed
 
-//   "https://source.unsplash.com/1600x900/?nature,trees",
-//   "https://source.unsplash.com/1600x900/?nature,mountains",
-//   // Add more image URLs here...
-// ];
+  useEffect(() => {
+    const moveImages = () => {
+      setPosition((prevPosition) => prevPosition - speed);
 
-export function CarouselSpacing() {
+      // Reset position when the images are fully scrolled
+      if (position < -100 * images.length) {
+        setPosition(0);
+      }
+    };
+
+    const animationId = requestAnimationFrame(moveImages);
+
+    return () => cancelAnimationFrame(animationId);
+  }, [position]);
+
   return (
-    <main className="h-full w-full ">
-      <Carousel className="w-full ">
-        <CarouselContent className="-ml-1">
-          {images.map((src, index) => (
-            <CarouselItem
-              key={index}
-              className="pl-0 md:basis-1/2 lg:basis-1/3"
-            >
-              <div className="p-0">
-                <Card>
-                  <CardContent className="flex aspect-square items-center justify-center">
-                    <img
-                      src={src}
-                      alt={`Image ${index + 1}`}
-                      height={700}
-                      width={300}
-                    />
-                  </CardContent>
-                </Card>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-    </main>
+    <div className="flex flex-row justify-center  h-[350px] w-full ">
+      {images.map((imageUrl, index) => (
+        <img
+          key={index}
+          src={imageUrl}
+          alt={`Image ${index + 1}`}
+          style={{
+            display: "inline-block",
+            margin: "10px",
+            padding: "5px",
+            height: "200px",
+            width: "300px",
+            transform: `translateX(${position}px)`,
+          }}
+        />
+      ))}
+    </div>
   );
-}
+};
 
-export default CarouselSpacing;
+export default GallerySection;
